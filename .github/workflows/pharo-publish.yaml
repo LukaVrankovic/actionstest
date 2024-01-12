@@ -19,10 +19,6 @@ jobs:
           mv Pharo.image myimage.image
           mv Pharo.changes mychanges.changes
 
-      - name: Run Metacello Script
-        run: |
-        ./pharo myimage.image eval --save "Metacello new repository: 'github://noha/foliage/src'; baseline: 'Foliage'; load"
-
       - name: Run Pharo Script
         run: |
           ./pharo myimage.image eval --save "site := FOWebsite new site baseUri: 'https://localhost:8080'; import; inspect; publish."
