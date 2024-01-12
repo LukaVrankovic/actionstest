@@ -1,0 +1,33 @@
+name: Pharo Script and Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run_script_and_publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Pharo
+        run: |
+          curl https://get.pharo.org/64/80+vm | bash
+          mv Pharo.image myimage.image
+          mv Pharo.changes mychanges.changes
+
+      - name: Run Pharo Script
+        run: |
+          ./pharo myimage.image eval --save "site := FOWebsite new. site baseUri: 'https://localhost:8080'; import; inspect; publish."
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email "lukavrankovic97@gmail.com"
+          git config --global user.name "LukaVrankovic"
+          git checkout -b develop
+          git add .
+          git commit -m "Publish changes from Pharo script"
+          git push -u origin develop

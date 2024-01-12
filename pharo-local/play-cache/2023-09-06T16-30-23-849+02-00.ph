@@ -1,0 +1,1 @@
+Metacello new     repository: 'github://noha/foliage/src';    baseline: #Foliage;    load
