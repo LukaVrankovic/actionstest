@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Pharo Script
         run: |
-          ./pharo myimage.image eval --save "site := FOWebsite new site baseUri: 'https://localhost:8080'; import; inspect; publish."
+          ./pharo myimage.image eval --save "Metacello new repository: 'github://noha/foliage/src'; baseline: #Foliage; load. site := FOWebsite new site baseUri: 'https://localhost:8080'; import; inspect; publish."
 
       - name: Commit and Push Changes
         run: |
