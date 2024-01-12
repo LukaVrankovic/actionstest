@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Metacello Script
         run: |
-        ./pharo myimage.image eval --save "Metacello new repository: 'github://noha/foliage/src'; baseline: Foliage; load"
+        ./pharo myimage.image eval --save "Metacello new repository: 'github://noha/foliage/src'; baseline: 'Foliage'; load"
 
       - name: Run Pharo Script
         run: |
