@@ -1,27 +1,20 @@
-name: Pharo Script and Publish
+name: publish
 
 on:
   push:
-    branches:
-      - master
+    branches: [ main ]
 
 jobs:
-  run_script_and_publish:
+  generate: 
+    name: "Generate site"
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Install Pharo
-        run: |
-          curl https://get.pharo.org/64/100+vm | bash
-          mv Pharo.image myimage.image
-          mv Pharo.changes mychanges.changes
-
-      - name: Run Pharo Script
-        run: |
-          ./pharo myimage.image eval --save "Metacello new repository: 'github://noha/foliage/src'; baseline: #Foliage; load. site:= FOWebsite new baseUri: 'https://localhost:8080'; import; inspect; publish."
+    steps: 
+      - uses: actions/checkout@v2
+      - name: "Generate static HTML"
+        uses: estebanlm/foliage-action@main
+        with:
+          source: './raw'
+          target: 'generated'
 
       - name: Commit and Push Changes
         run: |
