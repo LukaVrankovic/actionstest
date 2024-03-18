@@ -11,7 +11,7 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - name: "Generate static HTML"
-        uses: LukaVrankovic/foliage-action@main
+        uses: estebanlm/foliage-action@main
         with:
           source: './raw'
           target: 'generated'
