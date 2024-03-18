@@ -15,7 +15,7 @@ jobs:
 
       - name: Install Pharo
         run: |
-          curl https://get.pharo.org/64/80+vm | bash
+          curl https://get.pharo.org/64/100+vm | bash
           mv Pharo.image myimage.image
           mv Pharo.changes mychanges.changes
 
