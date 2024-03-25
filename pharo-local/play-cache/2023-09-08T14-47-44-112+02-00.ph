@@ -1,1 +1,0 @@
-'raw' asFileReference inspect

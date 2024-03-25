@@ -1,1 +1,0 @@
-OmEntry {	#tags : {		#timestamp : DateAndTime [ '2023-09-13T12:53:18.523+02:00' ],		#self : OmReference [ '1' ]	},	#content : 'site := FOWebSite new\r    baseUri: \'http://localhost:8080\';\r    import;\r    inspect;\r    publish.'}
